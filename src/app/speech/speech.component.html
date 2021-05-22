@@ -1,0 +1,63 @@
+
+
+<div class="container w-50 mt-5">
+    <form [formGroup] = "myForm" (ngSubmit) = "getVideo(myForm)">
+        <input type="text" class="form-control" formControlName = "text" value="{{voiceText}}">
+        <div *ngIf = "myForm.get('text').status == 'INVALID' && myForm.get('text').touched == true" class="alert alert-danger">please type or speak to recognize</div>
+        <button class="btn btn-primary mt-3 mb-3 form-control" type="submit" >Get Video</button>
+        <div *ngIf="voiceActiveSectionDisabled; else voicesection;">
+            <button type="button" (click)="startVoiceRecognition()" class="btn btn-info mt-3 form-control">Record</button>
+        </div>
+        <div class="alert alert-danger container mt-3" *ngIf="isEntered">
+          please enter or speech with a valid word 
+        </div>
+    </form>
+   
+</div>
+
+
+
+  <div>
+    <ng-template #voicesection>
+        <ng-container *ngIf="!voiceActiveSectionError; else failure">
+          <ng-container *ngIf="voiceText; else start">
+            
+          </ng-container>
+          <ng-template #start>
+            <ng-container
+              *ngIf="voiceActiveSectionListening; else beginning">
+              <span>Listening...</span>
+            </ng-container>
+            <ng-template #beginning>
+              <span>Start talking...</span>
+            </ng-template>
+          </ng-template>
+        </ng-container>
+        <ng-template #failure>
+          <span>Didn't catch that</span>
+        </ng-template>
+        <div class="d-flex justify-content-center">
+          <button (click)="closeVoiceRecognition()" class="btn btn-danger mx-3">Close</button>
+          <button (click)="startVoiceRecognition()" class="btn btn-success">Restart</button>
+        </div>
+      </ng-template>
+  </div>
+
+
+
+  <div class="d-flex justify-content-center">
+    <video  autoplay muted style="width: 400px;height: 400px;outline: none;" class="mx-auto">
+        <source class = "vSrc" src="{{videoPath}}" type="video/mp4">    
+      </video>
+  </div>
+
+
+
+
+
+
+
+
+
+
+

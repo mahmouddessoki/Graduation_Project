@@ -1,0 +1,31 @@
+<div class="container">
+    <form action="" class="w-75 mx-auto my-5" [formGroup]="myRegisterForm" (ngSubmit) = "getRegisterForm(myRegisterForm)">
+        <div class="form-group mb-2">
+            <label for="fName">first name</label>
+            <input id="fName" type="text" class="form-control" formControlName = "first_name">
+            <p *ngIf = "myRegisterForm.get('first_name').status == 'INVALID' && myRegisterForm.get('first_name').touched" class="alert alert-danger">please enter valid first name</p>
+        </div>
+        <div class="form-group mb-2">
+            <label>last name</label>
+            <input type="text" class="form-control" formControlName="last_name">
+            <p  *ngIf="myRegisterForm.get('last_name').status == 'INVALID' && myRegisterForm.get('last_name').touched" class="alert alert-danger">please enter valid last name</p>
+        </div>
+        <div class="form-group mb-2">
+            <label>Age</label>
+            <input type="text" class="form-control" formControlName = "age">
+            <p *ngIf = "myRegisterForm.get('age').status == 'INVALID' && myRegisterForm.get('age').touched" class="alert alert-danger">please enter valid Age</p>
+        </div>
+        <div class="form-group mb-2">
+            <label>Email</label>
+            <input  class="form-control" formControlName = "email">
+            <p *ngIf = "myRegisterForm.get('email').status == 'INVALID' && myRegisterForm.get('email').touched" class="alert alert-danger">please enter valid Email</p>
+        </div>
+        <div class="form-group mb-2">
+            <label >password</label>
+            <input type="password" class="form-control" formControlName = "password">
+            <p *ngIf = "myRegisterForm.get('password').status == 'INVALID' && myRegisterForm.get('password').touched" class="alert alert-danger">please enter valid password</p>
+        </div>
+
+        <button [disabled] = "myRegisterForm.status == 'INVALID' " type="submit" class="btn btn-primary" >Register</button>
+    </form>
+</div>

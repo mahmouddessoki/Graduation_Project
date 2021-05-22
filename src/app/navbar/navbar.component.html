@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-center">
+    <a class="navbar-brand navbarBrand" routerLink = "home">Sign_Language</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="collapsibleNavId">
+
+        
+        <ul class="navbar-nav mt-2 mt-lg-0" >
+           
+            <li class="nav-item">
+                <a class="nav-link" *ngIf = "loginFlag" routerLink = "home" routerLinkActive = "active-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" *ngIf = "loginFlag" routerLink = "dictionary" routerLinkActive = "active-link">Dictionary</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" *ngIf = "loginFlag" routerLink = "speech" routerLinkActive = "active-link">Speech</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" *ngIf = "loginFlag" routerLink = "about" routerLinkActive = "active-link">About</a>
+            </li>
+            
+           
+            
+
+           
+        </ul>
+
+        <div class="d-flex align-items-center justify-content-center text-center flex-nowrap my-2 my-lg-0 ml-auto">
+            <div class="socialIcons">
+                <i class="fab fa-facebook text-white  px-2 fa-2x cursor-pointer"></i>
+                <i class="fab fa-twitter text-white px-2 fa-2x cursor-pointer"></i>
+                <i class="fab fa-instagram text-white px-2 fa-2x cursor-pointer"></i>
+            </div>
+            
+       
+            <a  *ngIf = "loginFlag" class="nav-link text-white logout" (click) = "logout()" >Logout</a>
+       
+            <a  *ngIf = "!loginFlag" class="nav-link text-white " routerLink = "login">login</a>
+       
+            <a  *ngIf = "!loginFlag" class="nav-link text-white" routerLink = "register">register</a>
+       
+        </div>
+
+
+    </div>
+</nav>
